@@ -4,29 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Пункт 3">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/api_auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/connect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/tokens.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/requests/api_auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/resources/api_auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/api_auth.py" afterDir="false" />
+    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Всё, кроме необязательного refresh_token">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/requests/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/tokens.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731550682942</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Всё, кроме необязательного refresh_token">
+      <option name="closed" value="true" />
+      <created>1738994724957</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738994724957</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +176,7 @@
     <MESSAGE value="task 7" />
     <MESSAGE value="db conf" />
     <MESSAGE value="Пункт 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пункт 3" />
+    <MESSAGE value="Всё, кроме необязательного refresh_token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Всё, кроме необязательного refresh_token" />
   </component>
 </project>
