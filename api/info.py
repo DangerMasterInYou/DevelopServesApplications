@@ -1,9 +1,6 @@
 from fastapi import APIRouter, Request
 import platform
-from database import engine
-from sqlalchemy import text
-
-from models.info import ServerInfoDTO, ClientInfoDTO, DataBaseInfoDTO
+from dto.requests.info import ServerInfoDTO, ClientInfoDTO
 
 info_router = APIRouter(prefix="/info", tags=["info"])
 
@@ -17,13 +14,5 @@ def get_python_version():
 async def get_metadata_client(request: Request):
     client_ip = request.client.host
     useragent = request.headers.get("User-Agent")
-    return ClientInfoDTO(client_ip=client_ip, useragent=useragent)
-
-
-@info_router.get('/database')
-def get_info_database():
-    database_name = engine.url.database
-    with engine.connect() as connection:
-        result = connection.execute(text("SELECT version()"))
-        database_version = result.fetchone()[0]
-    return DataBaseInfoDTO(database_name=database_name, database_version=database_version)
+    name_browser = "Vivaldi"
+    return ClientInfoDTO(client_ip=client_ip, useragent=useragent, name_browser=name_browser)

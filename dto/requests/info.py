@@ -2,7 +2,6 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-# DTO с информацией о сервере
 class ServerInfoDTO(BaseModel):
     python_info: str = Field(min_length=1)
 

@@ -4,8 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="db conf">
+    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Пункт 3">
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/api_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/connect.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/tokens.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/requests/api_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/api_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/api_auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/requests/info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +48,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2nm1KYp9kAN1yRrS5tXxPQoSSRW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,9 +67,18 @@
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "lb2"
+    "git-widget-placeholder": "lb2",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/SimpleSqliteBrowser-1.0.7.zip",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Study\DevelopServerApplication\lb1\dto\requests" />
+      <recent name="S:\Study\DevelopServerApplication\lb1\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="lb1" />
@@ -108,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731379440728</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Пункт 3">
+      <option name="closed" value="true" />
+      <created>1731550682942</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731550682942</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +186,7 @@
     <MESSAGE value="main no lab" />
     <MESSAGE value="task 7" />
     <MESSAGE value="db conf" />
-    <option name="LAST_COMMIT_MESSAGE" value="db conf" />
+    <MESSAGE value="Пункт 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пункт 3" />
   </component>
 </project>
