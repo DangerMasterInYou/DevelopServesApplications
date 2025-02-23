@@ -5,7 +5,7 @@ from passlib.hash import sha256_crypt
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 from database.connect import SessionDep
-from database.models.base import TokenModel
+from database.models.models import TokenModel
 import jwt
 import os
 from dotenv import load_dotenv
@@ -14,6 +14,7 @@ load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
+MAX_COUNT_TOKEN = int(os.getenv("MAX_COUNT_TOKEN"))
 
 
 class TokenType(Enum):

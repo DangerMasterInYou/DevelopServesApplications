@@ -2,10 +2,10 @@ from fastapi import APIRouter, Request, HTTPException, Response, Depends
 from sqlalchemy import select
 from starlette import status
 from database.connect import SessionDep
-from database.models.base import UserModel, TokenModel
+from database.models.models import UserModel, TokenModel
 from dto.requests.api_auth import LoginRequestApiAuthDTO, RegistrationRequestApiAuthDTO
 from dto.resources.api_auth import AuthResourcesDTO, RegistrationResourcesDTO
-from service.api_auth import hash_password, verify_password, create_jwt_token, jwt_checker, TokenType
+from service.jwt_token import hash_password, verify_password, create_jwt_token, jwt_checker, TokenType, MAX_COUNT_TOKEN
 
 api_auth_router = APIRouter(prefix="/api/auth", tags=["api_auth"])
 
@@ -28,9 +28,10 @@ async def post_authorization(data: LoginRequestApiAuthDTO, session: SessionDep, 
     )
     active_tokens = token_query.scalars().all()
 
-    if len(active_tokens) >= 10:
-        for user_data_token in active_tokens[:len(active_tokens) - 9]:
-            await session.delete(user_data_token)
+    if len(active_tokens) >= MAX_COUNT_TOKEN:
+        active_tokens_sorted = sorted(active_tokens, key=lambda t: t.created_at)
+        for token in active_tokens_sorted[:len(active_tokens) - (MAX_COUNT_TOKEN - 1)]:
+            await session.delete(token)
 
     token_data = {
         "user_id": existing_user.id,

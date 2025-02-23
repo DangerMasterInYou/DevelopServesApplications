@@ -4,8 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Correct import and add README.md">
+    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Всё, кроме необязательного refresh_token">
+      <change afterPath="$PROJECT_DIR$/api/api_ref/policy/permission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/api_ref/policy/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/api_ref/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/policy/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/policy/roles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/policy/rolesAndPermissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/policy/usersAndRoles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/policy/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/policy/roles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/policy/rolesAndPermissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/policy/usersAndRoles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/seeds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/permission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/roleAndPermission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/userAndRole.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/users.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/requests/policy/permission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/requests/policy/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/requests/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/policy/permission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/policy/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/policy/userAndRole.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/policy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/tokens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/api_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/jwt_token.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +57,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="lb2" />
@@ -55,6 +91,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Study\DevelopServerApplication\lb1\dto\resources" />
+      <recent name="S:\Study\DevelopServerApplication\lb1\database\seeds" />
       <recent name="S:\Study\DevelopServerApplication\lb1\dto\requests" />
       <recent name="S:\Study\DevelopServerApplication\lb1\src" />
     </key>
@@ -139,15 +177,7 @@
       <option name="project" value="LOCAL" />
       <updated>1738994724957</updated>
     </task>
-    <task id="LOCAL-00006" summary="Correct import and add README.md">
-      <option name="closed" value="true" />
-      <created>1739021134369</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1739021134369</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,7 +196,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="lb2" />
+                        <option value="lb3" />
                       </list>
                     </value>
                   </entry>
@@ -184,7 +214,6 @@
     <MESSAGE value="db conf" />
     <MESSAGE value="Пункт 3" />
     <MESSAGE value="Всё, кроме необязательного refresh_token" />
-    <MESSAGE value="Correct import and add README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correct import and add README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Всё, кроме необязательного refresh_token" />
   </component>
 </project>
