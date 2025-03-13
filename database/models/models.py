@@ -1,5 +1,4 @@
 from database.models.base import Base
-
 from database.models.users import UserModel
 from database.models.tokens import TokenModel
 from database.models.policy.roles import RoleModel
