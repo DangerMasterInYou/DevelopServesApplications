@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Request, HTTPException, Response, Depends
 from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
 from starlette import status
 from database.connect import SessionDep
 from database.models.models import UserModel, TokenModel
 from dto.requests.api_auth import LoginRequestApiAuthDTO, RegistrationRequestApiAuthDTO
 from dto.resources.api_auth import AuthResourcesDTO, RegistrationResourcesDTO
+from dto.resources.user import UserFullResourceDTO
 from service.jwt_token import hash_password, verify_password, create_jwt_token, jwt_checker, TokenType, MAX_COUNT_TOKEN
+from service.logs import create_log
 
 api_auth_router = APIRouter(prefix="/api/auth", tags=["api_auth"])
 
@@ -53,24 +56,37 @@ async def post_authorization(data: LoginRequestApiAuthDTO, session: SessionDep, 
 
 @api_auth_router.post('/registration', response_model=RegistrationResourcesDTO, status_code=status.HTTP_201_CREATED)
 async def post_registration(data: RegistrationRequestApiAuthDTO, session: SessionDep):
-    existing_user = await session.execute(
-        select(UserModel).filter((UserModel.username == data.username) | (UserModel.email == data.email))
-    )
-    if existing_user.scalar() is not None:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Username or email already registered")
+    try:
+        existing_user = await session.execute(
+            select(UserModel).filter((UserModel.username == data.username) | (UserModel.email == data.email))
+        )
+        if existing_user.scalar() is not None:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Username or email already registered")
 
-    new_user = UserModel(
-        username=data.username,
-        password=hash_password(data.password),
-        email=data.email,
-        birthday=data.birthday,
-    )
+        new_user = UserModel(
+            username=data.username,
+            password=hash_password(data.password),
+            email=data.email,
+            birthday=data.birthday,
+        )
 
-    session.add(new_user)
-    await session.flush()
-    await session.commit()
-    await session.refresh(new_user)
-    return RegistrationResourcesDTO(user_id=new_user.id, username=new_user.username, email=new_user.email)
+        session.add(new_user)
+        await session.flush()
+        await session.refresh(new_user)
+
+        after_data = UserFullResourceDTO.model_validate(new_user).model_dump(mode="json")
+        await create_log(new_user.__tablename__, new_user.id, new_user.id, session, None, after_data)
+        await session.commit()
+
+        return RegistrationResourcesDTO(
+            user_id=new_user.id,
+            username=new_user.username,
+            email=new_user.email
+        )
+
+    except SQLAlchemyError as e:
+        await session.rollback()
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
 
 @api_auth_router.get('/me', response_model=AuthResourcesDTO, status_code=status.HTTP_200_OK)
@@ -86,20 +102,33 @@ async def get_me_info(request: Request, payload: str = Depends(jwt_checker)):
 @api_auth_router.patch('/switch_password', status_code=status.HTTP_205_RESET_CONTENT)
 async def patch_switch_password(password: str, new_password: str, response: Response,
                                 session: SessionDep, payload: str = Depends(jwt_checker)):
-    query = await session.execute(
-        select(UserModel).filter((UserModel.id == payload["user_id"]))
-    )
-    user_data = query.scalar_one_or_none()
-    if user_data is None or not verify_password(password, user_data.password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Password not current")
-    user_data.password = hash_password(new_password)
-    await session.flush()
-    await session.commit()
+    try:
+        user_id = int(payload["user_id"])
+        query = await session.execute(
+            select(UserModel).filter((UserModel.id == user_id))
+        )
+        user_data = query.scalar_one_or_none()
+        if user_data is None or not verify_password(password, user_data.password):
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Password not current")
 
-    response.delete_cookie(key="access_token")
-    await delete_user_tokens(session=session, payload=payload)
+        before_data = UserFullResourceDTO.model_validate(user_data).model_dump(mode="json")
 
-    return Response(status_code=status.HTTP_205_RESET_CONTENT)
+        user_data.password = hash_password(new_password)
+        await session.flush()
+        await session.refresh(user_data)
+
+        after_data = UserFullResourceDTO.model_validate(user_data).model_dump(mode="json")
+        await create_log(user_data.__tablename__, user_data.id, user_id, session, before_data, after_data)
+
+        await session.commit()
+
+        response.delete_cookie(key="access_token")
+        await delete_user_tokens(session=session, payload=payload)
+
+        return Response(status_code=status.HTTP_205_RESET_CONTENT)
+    except SQLAlchemyError as e:
+        await session.rollback()
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
 
 @api_auth_router.delete('/out', status_code=status.HTTP_204_NO_CONTENT)
@@ -113,7 +142,6 @@ async def delete_token_database(request: Request, session: SessionDep, payload: 
 
     if token_to_delete:
         await session.delete(token_to_delete)
-        await session.flush()
         await session.commit()
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Access token not found")

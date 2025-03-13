@@ -15,11 +15,25 @@ class UserAndRoleResourceDTO(BaseModel):
     updated_by: Optional[int]
 
     class Config:
+        from_attributes = True
         model_validate = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat(),
+        }
+
+    def to_dict(self):
+        return self.model_dump(mode="json")
 
 
 class UserAndRolesResourceDTO(BaseModel):
     user_and_roles: List[UserAndRoleResourceDTO]
 
     class Config:
+        from_attributes = True
         model_validate = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat(),
+        }
+
+    def to_dict(self):
+        return self.model_dump(mode="json")

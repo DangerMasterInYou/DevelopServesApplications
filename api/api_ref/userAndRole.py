@@ -1,11 +1,10 @@
 from enum import Enum
-
 from fastapi import APIRouter, Depends
 from starlette import status
-
 from database.connect import SessionDep
-from dto.controllers.policy.userAndRole import user_add_roles, hard_delete_user_role
-from dto.controllers.users import users, user_roles, soft_delete_user_role, restore_user_role
+from dto.controllers.policy.userAndRole import user_add_roles, hard_delete_user_role, user_roles, soft_delete_user_role, restore_user_role
+from dto.controllers.story.user import user_story
+from dto.controllers.user import users
 from dto.resources.policy.role import RoleResourceDTO, RolesResourceDTO
 from dto.resources.policy.userAndRole import UserAndRolesResourceDTO, UserAndRoleResourceDTO
 from dto.resources.user import UsersResourceDTO, UserResourceDTO
@@ -23,6 +22,7 @@ class UserPermissionCipher(Enum):
     update = AbstractPermissionCipher.update.value + type
     delete = AbstractPermissionCipher.delete.value + type
     restore = AbstractPermissionCipher.restore.value + type
+    get_story = AbstractPermissionCipher.get_story.value + type
 
 
 @api_ref_user.get('', response_model=UsersResourceDTO, status_code=status.HTTP_200_OK)
@@ -81,3 +81,11 @@ async def post_user_role_restore(session: SessionDep, user_id: int, role_id: int
     permission_cipher = UserPermissionCipher.restore.value
     _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
     return await restore_user_role(role_id, user_id, updater_id, session)
+
+
+@api_ref_user.get('/{user_id:int}/story', status_code=status.HTTP_200_OK)
+async def get_user_story(session: SessionDep, user_id: int, payload: str = Depends(jwt_checker)):
+    updater_id = int(payload['user_id'])
+    permission_cipher = UserPermissionCipher.get_story.value
+    _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
+    return await user_story(user_id, updater_id, session)

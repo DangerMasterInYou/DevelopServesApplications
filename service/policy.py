@@ -14,18 +14,19 @@ class AbstractPermissionCipher(Enum):
     update = "update-"
     delete = "delete-"
     restore = "restore-"
+    get_story = "get-story-"
 
 
 async def check_policy_role_to_permission(updater_id: int, permission_cipher: str, session: SessionDep) -> (
         bool or HTTPException):
     query = await session.execute(
         select(UserAndRoleModel.role_id).filter(UserAndRoleModel.user_id == updater_id,
-                                                UserAndRoleModel.deleted is False)
+                                                UserAndRoleModel.deleted == False)
     )
     roles_id = query.scalars().all()
 
     if not roles_id:
-        raise HTTPException(status_code=403, detail="You do not have any roles")
+        raise HTTPException(status_code=403, detail=f"You do not have any roles{permission_cipher}")
 
     return await check_policy_permission(roles_id, permission_cipher, session)
 
@@ -33,7 +34,7 @@ async def check_policy_role_to_permission(updater_id: int, permission_cipher: st
 async def check_policy_permission(roles_id: list[int], permission_cipher: str, session: SessionDep) -> (
         bool or HTTPException):
     if not roles_id:
-        raise HTTPException(status_code=403, detail="You do not have any roles")
+        raise HTTPException(status_code=403, detail=f"You do not have {permission_cipher} any roles")
 
     permission_query = await session.execute(
         select(RoleAndPermissionModel)

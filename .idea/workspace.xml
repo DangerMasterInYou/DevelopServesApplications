@@ -4,45 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="Всё, кроме необязательного refresh_token">
-      <change afterPath="$PROJECT_DIR$/api/api_ref/policy/permission.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/api_ref/policy/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/api_ref/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/policy/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/policy/roles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/policy/rolesAndPermissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/policy/usersAndRoles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/policy/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/policy/roles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/policy/rolesAndPermissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/policy/usersAndRoles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/seeds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/permission.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/roleAndPermission.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/controllers/policy/userAndRole.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/controllers/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/requests/policy/permission.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/requests/policy/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/requests/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/resources/policy/permission.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/resources/policy/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/resources/policy/userAndRole.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/resources/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/policy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="d160bb83-10b1-4730-af91-e3b34ac1c052" name="Changes" comment="CRUD Admin">
+      <change afterPath="$PROJECT_DIR$/api/api_ref/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/api_ref/policy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/story/story.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/changeLogs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/controllers/story/story.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/resources/changeLog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/story.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/api_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/models/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api_ref/policy/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_ref/policy/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api_ref/policy/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_ref/policy/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api_ref/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_ref/userAndRole.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/policy/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/policy/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/policy/roles.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/policy/roles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/policy/rolesAndPermissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/policy/rolesAndPermissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/policy/usersAndRoles.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/policy/usersAndRoles.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/models/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/models/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/policy/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/policy/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/controllers/policy/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/controllers/policy/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/controllers/policy/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/controllers/policy/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/controllers/policy/userAndRole.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/controllers/policy/userAndRole.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/controllers/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/controllers/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/resources/policy/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/resources/policy/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/resources/policy/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/resources/policy/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/resources/policy/userAndRole.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/resources/policy/userAndRole.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/resources/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/dto/resources/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/api_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/jwt_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/policy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +53,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lb2" />
+        <entry key="$PROJECT_DIR$" value="lb3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,7 +77,7 @@
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "lb3",
+    "git-widget-placeholder": "lb4",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/SimpleSqliteBrowser-1.0.7.zip",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -91,10 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Study\DevelopServerApplication\lb1\api\api_ref" />
+      <recent name="S:\Study\DevelopServerApplication\lb1\api\api_ref\policy" />
+      <recent name="S:\Study\DevelopServerApplication\lb1\dto\controllers\story" />
+      <recent name="S:\Study\DevelopServerApplication\lb1\database\models" />
       <recent name="S:\Study\DevelopServerApplication\lb1\dto\resources" />
-      <recent name="S:\Study\DevelopServerApplication\lb1\database\seeds" />
-      <recent name="S:\Study\DevelopServerApplication\lb1\dto\requests" />
-      <recent name="S:\Study\DevelopServerApplication\lb1\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -177,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738994724957</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="CRUD Admin">
+      <option name="closed" value="true" />
+      <created>1740293382414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740293382414</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,6 +217,33 @@
     <MESSAGE value="db conf" />
     <MESSAGE value="Пункт 3" />
     <MESSAGE value="Всё, кроме необязательного refresh_token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Всё, кроме необязательного refresh_token" />
+    <MESSAGE value="CRUD Admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD Admin" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dto/controllers/story/story.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dto/controllers/policy/permission.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dto/controllers/policy/permission.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dto/controllers/policy/permission.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -4,6 +4,7 @@ from starlette import status
 from database.connect import SessionDep
 from dto.controllers.policy.role import users_roles, create_role, specific_role, update_role, hard_delete_role, \
     soft_delete_role, restore_role
+from dto.controllers.story.role import role_story
 from dto.requests.policy.role import CreateRoleRequestDTO, UpdateRoleRequestDTO
 from dto.resources.policy.role import RoleResourceDTO, RolesResourceDTO
 from service.jwt_token import jwt_checker
@@ -20,6 +21,7 @@ class RolePermissionCipher(Enum):
     update = AbstractPermissionCipher.update.value + type
     delete = AbstractPermissionCipher.delete.value + type
     restore = AbstractPermissionCipher.restore.value + type
+    get_story = AbstractPermissionCipher.get_story.value + type
 
 
 @api_ref_policy_role.get('', response_model=RolesResourceDTO, status_code=status.HTTP_200_OK)
@@ -61,7 +63,7 @@ async def put_role(role_id: int, data: UpdateRoleRequestDTO, session: SessionDep
 
     role = await update_role(role_id, data, updater_id, session)
 
-    return RoleResourceDTO.model_validate(role.__dict__)
+    return RoleResourceDTO.model_validate(role.__dict__).model_dump(mode="json")
 
 
 @api_ref_policy_role.delete('/{role_id:int}', status_code=status.HTTP_204_NO_CONTENT)
@@ -70,7 +72,7 @@ async def delete_hard_role(role_id: int, session: SessionDep, payload: str = Dep
     permission_cipher = RolePermissionCipher.delete.value
     _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
 
-    role = await hard_delete_role(role_id, session)
+    return await hard_delete_role(role_id, updater_id,session)
 
 
 @api_ref_policy_role.delete('/{role_id:int}/soft', response_model=RoleResourceDTO, status_code=status.HTTP_200_OK)
@@ -93,3 +95,11 @@ async def post_role_restore(role_id: int, session: SessionDep, payload: str = De
     role = await restore_role(role_id, updater_id, session)
 
     return RoleResourceDTO.model_validate(role.__dict__)
+
+
+@api_ref_policy_role.get('/{role_id:int}/story', status_code=status.HTTP_200_OK)
+async def get_role_story(session: SessionDep, role_id: int, payload: str = Depends(jwt_checker)):
+    updater_id = int(payload['user_id'])
+    permission_cipher = RolePermissionCipher.get_story.value
+    _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
+    return await role_story(role_id, session)

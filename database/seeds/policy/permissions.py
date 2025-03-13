@@ -18,7 +18,8 @@ permissions = [
     {"name": "create-", "description": "Create a new ", "cipher": "create-"},
     {"name": "update-", "description": "Update ", "cipher": "update-"},
     {"name": "delete-", "description": "Delete a ", "cipher": "delete-"},
-    {"name": "restore-", "description": "Restore a deleted ", "cipher": "restore-"}
+    {"name": "restore-", "description": "Restore a deleted ", "cipher": "restore-"},
+    {"name": "get-story-", "description": "Get story of ", "cipher": "get-story-"}
 ]
 
 user_permissions = [type_data_to_model(perm, "user") for perm in permissions]

@@ -9,12 +9,13 @@ import webbrowser
 
 from sqlalchemy import select
 
-from database.connect import SessionDep, new_session
+from api.story.story import story
+from database.connect import new_session
 from fastapi.middleware.cors import CORSMiddleware
 from api.info import info_router
 from api.api_auth import api_auth_router
 from api.db import db_router, setup_database, refresh_database
-from api.api_ref.user import api_ref_user
+from api.api_ref.userAndRole import api_ref_user
 from api.api_ref.policy.role import api_ref_policy_role
 from api.api_ref.policy.permission import api_ref_policy_permission
 import socket
@@ -60,6 +61,7 @@ app.include_router(api_ref_user, prefix=prefix_api_ref, tags=[tags_api_ref])
 app.include_router(api_ref_policy_role, prefix=prefix_api_ref_policy, tags=[tags_api_ref_policy])
 app.include_router(api_ref_policy_permission, prefix=prefix_api_ref_policy,
                    tags=[tags_api_ref_policy])
+app.include_router(story, prefix='/story', tags=['story'])
 
 
 @app.get('/')

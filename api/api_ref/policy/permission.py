@@ -4,7 +4,9 @@ from starlette import status
 from database.connect import SessionDep
 from dto.controllers.policy.permission import permissions, create_permission, specific_permission, update_permission, \
     hard_delete_permission, soft_delete_permission, restore_permission
+from dto.controllers.story.permission import permission_story
 from dto.requests.policy.permission import UpdatePermissionRequestDTO, CreatePermissionRequestDTO
+from dto.resources.changeLog import ChangeLogsDTO
 from dto.resources.policy.permission import PermissionsResourceDTO, PermissionResourceDTO
 from service.jwt_token import jwt_checker
 from service.policy import AbstractPermissionCipher, check_policy_role_to_permission
@@ -20,6 +22,7 @@ class PermissionCipher(Enum):
     update = AbstractPermissionCipher.update.value + type
     delete = AbstractPermissionCipher.delete.value + type
     restore = AbstractPermissionCipher.restore.value + type
+    get_story = AbstractPermissionCipher.get_story.value + type
 
 
 @api_ref_policy_permission.get('', response_model=PermissionsResourceDTO, status_code=status.HTTP_200_OK)
@@ -40,9 +43,8 @@ async def post_create_permission(data: CreatePermissionRequestDTO, session: Sess
     permission_cipher = PermissionCipher.create.value
     _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
 
-    new_role = await create_permission(data, updater_id, session)
-
-    return PermissionResourceDTO.model_validate(new_role.__dict__)
+    new_permission = await create_permission(data, updater_id, session)
+    return PermissionResourceDTO.model_validate(new_permission.__dict__)
 
 
 @api_ref_policy_permission.get('/{permission_id}', response_model=PermissionsResourceDTO, status_code=status.HTTP_200_OK)
@@ -71,7 +73,7 @@ async def delete_hard_permission(permission_id: int, session: SessionDep, payloa
     permission_cipher = PermissionCipher.delete.value
     _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
 
-    permission = await hard_delete_permission(permission_id, session)
+    permission = await hard_delete_permission(permission_id, updater_id, session)
 
     return PermissionResourceDTO.model_validate(permission.__dict__)
 
@@ -96,5 +98,13 @@ async def post_permission_restore(permission_id: int, session: SessionDep, paylo
     permission = await restore_permission(permission_id, updater_id, session)
 
     return PermissionResourceDTO.model_validate(permission.__dict__)
+
+
+@api_ref_policy_permission.get('/{permission_id:int}/story', response_model=ChangeLogsDTO, status_code=status.HTTP_200_OK)
+async def get_permission_story(session: SessionDep, permission_id: int, payload: str = Depends(jwt_checker)):
+    updater_id = int(payload['user_id'])
+    permission_cipher = PermissionCipher.get_story.value
+    _: bool = await check_policy_role_to_permission(updater_id, permission_cipher, session)
+    return await permission_story(permission_id, session)
 
 
